@@ -1,0 +1,987 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst54
+ * Generated on : 30-Sep-2025 09:22:14
+ * Version      : 1.0
+ */
+ application "Store Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Store
+		{
+			success message = "Store Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			DOB
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Blood_Group
+			(
+				type = checkboxes	
+				values = {"O+ve","B+ve","AB-ve"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Age
+			(
+				type = number
+				maxchar = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Qualification
+			(
+				type = picklist
+				maxchar = 100
+				values = {"BCA","CSE","B.tech","B.sc.cs","B.com"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PhoneNo
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Department2
+			(
+				type = picklist
+				displayname = "Department"
+				maxchar = 100
+				values = {"Marketing","Sales","Developer","Creator"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			EmpID
+			(
+    			type = autonumber
+				start index = 101
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Role
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Manager","HR","Team Lead","Developer"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			salary
+			(
+				type = number
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			DA
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PF
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Gross_salary
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_Leavedays
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_LOP
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Commision
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_Tax
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Net_salary
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form store_Employee_ID
+		{
+			displayname = "store Employee_ID"
+			success message = "Data Added Successfully!"
+			Emp_Name
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_id
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Emp_Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			PhoneNo
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Emp_sal
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Stores
+		{
+			displayName = "All Stores"
+			show all rows from Store    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Qualification
+				Email
+				DOB
+				Age
+				PhoneNo
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Role
+				salary
+				Blood_Group
+				Department2 as "Department"
+				PF
+				Employee_LOP
+				Commision
+				Employee_Tax
+				DA
+				Gross_salary
+				Net_salary
+				EmpID
+				Emp_Leavedays
+			)
+		}
+		default list store_Employee_ID_Report
+		{
+			displayName = "store Employee_ID Report"
+			show all rows from store_Employee_ID    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Emp_Email
+				PhoneNo
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Employee_id
+				Emp_sal
+			)
+		}
+		pivotchart Employee
+		{ 
+			displayname = "Employee"
+						report properties
+			(
+				records displayed = all_records
+				allow export = false
+				allow drilldown and view underlying data = false
+		
+			)
+
+			based on Autoview_1757828410032_Store
+				show all rows from Store
+				(
+			Name 
+ 			(
+ 				first_name as "Name"
+ 				prefix as "Name.Prefix"
+ 				last_name as "Name.Last Name"
+ 				suffix as "Name.Suffix"
+     			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+ 			)
+			DOB 
+			Age 
+			Qualification 
+			PhoneNo 
+			Department2  as "Department"
+			EmpID 
+			Role 
+			Email 
+			salary 
+			DA 
+			PF 
+			Gross_salary 
+			Emp_Leavedays 
+			Employee_LOP 
+			Commision 
+			Employee_Tax 
+			Net_salary 
+				)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			calculate_age as "calculate age"
+			{
+				type =  form
+				form = Store
+				record event = on add or edit
+
+				on user input of DOB
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = input.DOB;
+										input.Age = var.yearsBetween(today);
+										disable Age;
+						)
+					}
+				}
+
+			}
+			calculate_Employee_salary as "calculate Employee salary"
+			{
+				type =  form
+				form = Store
+				record event = on add or edit
+
+				on user input of Role
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Role == "Manager")
+										{
+											input.salary = 70000;
+										}
+										else if(input.Role == "HR")
+										{
+											input.salary = 80000;
+										}
+										else if(input.Role == "Team lead")
+										{
+											input.salary = 50000;
+										}
+										else if(input.Role == "Developer")
+										{
+											input.salary = 100000;
+										}
+										else
+										{
+											input.salary = 80000;
+										}
+										input.DA = (input.salary * 50) / 100;
+										input.PF = (input.salary * 12) / 100;
+										input.Gross_salary = input.salary + input.DA;
+										info input.Gross_salary;
+										if(input.Emp_Leavedays != null && input.Emp_Leavedays > 0)
+										{
+											lop_per_day = (input.salary + input.DA) / 26 * input.Emp_Leavedays;
+											input.Employee_LOP = input.Employee_LOP * input.Emp_Leavedays;
+										}
+										else
+										{
+											input.Employee_LOP = 0;
+										}
+										if(input.Role == "Developer")
+										{
+											input.Commision = input.Gross_salary * 10 / 100;
+										}
+										else if(input.Role == "Team Lead")
+										{
+											input.Commision = input.Gross_salary * 15 / 100;
+										}
+										else
+										{
+											input.Commision = 0;
+										}
+										if(input.Gross_salary <= 30000)
+										{
+											input.Employee_Tax = input.Gross_salary * 10 / 100;
+										}
+										else if(input.Gross_salary > 30000 && input.Gross_salary <= 50000)
+										{
+											input.Employee_Tax = input.Gross_salary * 20 / 100;
+										}
+										else
+										{
+											input.Employee_Tax = input.Gross_salary * 30 / 100;
+										}
+										input.Net_salary = input.Gross_salary - (input.PF + input.Employee_LOP + input.Employee_Tax) + input.Commision;
+						)
+					}
+				}
+
+			}
+			detailviewing as "detailviewing"
+			{
+				type =  form
+				form = store_Employee_ID
+				record event = on add or edit
+
+				on user input of Employee_id
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Store[EmpID == input.Employee_id];
+										input.Name = var.Name;
+										input.Emp_Email = var.Email;
+										input.PhoneNo = var.PhoneNo;
+										input.Emp_sal = var.salary;
+						)
+					}
+				}
+
+			}
+			salary as "salary"
+			{
+				type =  form
+				form = Store
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Gross_salary,PF,Net_salary,salary,Employee_Tax,DA,Commision;
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Store
+			{
+				label placement = left
+			}
+			form store_Employee_ID
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Stores
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Qualification
+								Email
+								DOB
+								Age
+								PhoneNo
+								Role
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Qualification
+								Email
+								DOB
+								Age
+								PhoneNo
+								Role
+								salary
+								Blood_Group
+								Department2 as "Department"
+								PF
+								Employee_LOP
+								Commision
+								Employee_Tax
+								DA
+								Gross_salary
+								Net_salary
+								EmpID
+								Emp_Leavedays
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report store_Employee_ID_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Emp_Email
+								PhoneNo
+								Employee_id
+								Emp_sal
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Emp_Email
+								PhoneNo
+								Employee_id
+								Emp_sal
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Employee
+			{
+				legend = RIGHT
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Stores
+				{
+					displayname = "Stores"
+					icon = "food-store"
+					form  Store
+					{
+						icon = "shopping-shop-location"
+					}
+					report All_Stores
+					{
+						icon = "tech-desktop"
+					}
+ 
+					report Employee
+					{
+						icon = "shopping-shop-location"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section store_Employee_ID
+				{
+					displayname = "store Employee_ID"
+					icon = "shopping-shop-location"
+					form  store_Employee_ID
+					{
+						icon = "shopping-shop-location"
+					}
+					report store_Employee_ID_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Store
+			{
+				label placement = auto
+			}
+			form store_Employee_ID
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Store
+			{
+				label placement = auto
+			}
+			form store_Employee_ID
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+	reports configuration
+	{
+	
+		Version = 2000043753161
+		Key     = "9uwBxUaXfvJSRYsTHxRxvdqdSbdgDyCJaXCzgQYtv2fgthYFK9xmzEdDjzAFMOmkJChuOGHWsGk30aZZvPRrq9SF2Wz82rbb2kAN"
+	}
+}
