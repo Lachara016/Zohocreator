@@ -1,0 +1,1728 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst54
+ * Generated on : 27-Nov-2025 13:51:25
+ * Version      : 1.0
+ */
+ application "Ice Cream Parlor Application"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Ice_cream_Flavors
+		{
+			displayname = "Ice cream Flavors"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Flavors
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ice_Cream_Price
+			(
+				displayname = "Ice Cream Price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Avl_Quantity
+			(
+				type = number
+				displayname = "Avl Quantity"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Order
+		{
+			success message = "Order Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Order_Name
+			(
+    			type = text
+				displayname = "Order Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Ice_Cream_details
+			(
+				type = grid
+				displayname = "Ice Cream details"
+				Ice_cream_Flavors
+				(
+					type = picklist	
+					displayname = "Ice cream Flavors"
+					values  = Ice_cream_Flavors.ID
+    				displayformat = [Flavors]
+					sortorder = ascending
+					width = medium
+				)
+				Toppings
+				(
+					type = list	
+					values  = Toppings.ID
+    				displayformat = [Toppings]
+					sortorder = ascending
+					height = 60px
+					width = medium
+				)
+				Quantity
+				(
+					type = number
+					initial value = 1
+					width = medium
+				)
+				Top_price
+				(
+					displayname = "Top price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Ice_cream_price
+				(
+					displayname = "Ice cream price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Icecream_Total_Price
+				(
+					displayname = "Icecream Total Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			I_have_one_more_requested
+			(
+    			type = checkbox
+				displayname = "I have one more requested"
+				initial value = false
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Personalization
+			(
+				type = picklist	
+				values  = Personalization.ID
+    			displayformat = [Custom]
+				sortorder = ascending
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			custom_price
+			(
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Section3
+			(
+				type = section
+				displayname = ""
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Grand_Total
+			(
+				displayname = "Grand Total"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = "Section"
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Personalization
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Custom
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			per_price
+			(
+				displayname = "per price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Purchase_Ice_Cream
+		{
+			displayname = "Purchase Ice Cream"
+			success message = "Purchase Ice Cream Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ice_cream_Flavors
+			(
+				type = picklist	
+				displayname = "Ice cream Flavors"
+				values  = Ice_cream_Flavors.ID
+    			displayformat = [Flavors]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Quantity
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Cost_price
+			(
+				displayname = "Cost price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Toppings
+			(
+				type = picklist	
+				values  = Toppings.ID
+    			displayformat = [Toppings]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Quantity1
+			(
+				type = number
+				displayname = "Quantity"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Top_Cost__Price
+			(
+				displayname = " Top Cost price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Toppings
+		{
+			success message = "Topping Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Toppings
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Top_price
+			(
+				displayname = "Top price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form update_QTY1
+		{
+			displayname = "update QTY"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ice_cream_Flavors
+			(
+				type = picklist	
+				displayname = "Ice cream Flavors"
+				values  = Ice_cream_Flavors.ID
+    			displayformat = [Flavors]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Quantity
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+	}
+	reports
+	{
+		default list Ice_cream_Flavors_Report
+		{
+			displayName = "Ice cream Flavors Report"
+			show all rows from Ice_cream_Flavors    
+			(
+				Flavors
+				Ice_Cream_Price as "Ice Cream Price"
+				Avl_Quantity as "Avl Quantity"
+				custom action "Update Quantity"
+				(
+	  			workflow = update_ice_cream_QTY
+				show action in edit record menu = true
+				column header = "Update Quantity"
+				)
+			)
+		}
+		default list All_Toppings
+		{
+			displayName = "All Toppings"
+			show all rows from Toppings    
+			(
+				Toppings
+				Top_price as "Top price"
+			)
+		}
+		default list All_Orders
+		{
+			displayName = "All Orders"
+			show all rows from Order    
+			(
+				Order_Name as "Order Name"
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Ice_Cream_details.Ice_cream_Flavors as "Ice Cream details"
+				I_have_one_more_requested as "I have one more requested"
+				Grand_Total as "Grand Total"
+				Personalization
+				custom_price
+			)
+		}
+		default list Personalization_Report
+		{
+			displayName = "Personalization Report"
+			show all rows from Personalization    
+			(
+				Custom
+				per_price as "per price"
+			)
+		}
+		default list All_Purchase_Ice_Creams
+		{
+			displayName = "All Purchase Ice Creams"
+			show all rows from Purchase_Ice_Cream    
+			(
+				Toppings
+				Quantity
+				Cost_price as "Cost price"
+				Ice_cream_Flavors as "Ice cream Flavors"
+				Quantity1 as "Quantity"
+				Top_Cost__Price as " Top Cost price"
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			fetch_ice_cream_price1 as "fetch ice cream price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of Ice_Cream_details.Ice_cream_Flavors
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											mem = Ice_cream_Flavors[ID == row.Ice_cream_Flavors];
+										row.Ice_cream_price=mem.Ice_Cream_Price;
+										// row.Icecream_Total_Price = var;
+										// row.Icecream_Total_Price = 0;
+										row.Icecream_Total_Price=row.Ice_cream_price;
+										// info input.Ice_Cream_details.Ice_cream_price ;
+										// row.Icecream_Total_Price = 0;
+										// for each new in Ice_Cream_details
+										// {
+										// 	new.Icecream_Total_Price = 0;
+										// 	mem = Ice_cream_Flavors[ID == new.Ice_cream_Flavors];
+										// 	new.Ice_cream_price = mem.Ice_Cream_Price;
+										// 	new.Icecream_Total_Price = new.Icecream_Total_Price + new.Ice_cream_price;
+										// }
+						)
+					}
+				}
+
+			}
+			calculate_total_price as "calculate total price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of Ice_Cream_details.Quantity
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// // row.Icecream_Total_Price = row.Quantity * row.Ice_cream_price;
+										// // row.Icecream_Total_Price=row.Quantity * row.Ice_cream_price;
+										// // var=row.Icecream_Total_Price *row.Top_price;
+										var = row.Ice_cream_price + row.Top_price;
+										var1 = row.Quantity;
+										if(var1 != null)
+										{
+											row.Icecream_Total_Price=var * var1;
+											row.Icecream_Total_Price=row.Ice_cream_price;
+										}
+						)
+					}
+				}
+
+			}
+			personalized_hide as "personalized hide"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Personalization;
+										hide custom_price;
+						)
+					}
+				}
+
+			}
+			show_personalized as "show personalized"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of I_have_one_more_requested
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// if(I_have_one_more_requested == true)
+										// {
+										// 	show Personalization;
+										// 	show custom_price;
+										// }
+										// else if(I_have_one_more_requested == False)
+										// {
+										// 	hide Personalization;
+										// 	hide custom_price;
+										// 	input.custom_price = 0;
+										// }
+						)
+					}
+				}
+
+			}
+			calculate_Grand_total as "calculate Grand total"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Ice_Cream_details.Quantity
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Icecream_Total_Price=row.Quantity * (row.Ice_cream_price + row.Top_price);
+										input.Grand_Total = 0;
+										for each  r in input.Ice_Cream_details
+										{
+											input.Grand_Total = input.Grand_Total + r.Icecream_Total_Price;
+										}
+										// input.Grand_Total=input.custom_price+input.Ice_Cream_details.sum(Icecream_Total_Price);
+						)
+					}
+				}
+
+			}
+			fetch_toppings as "fetch toppings"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Ice_Cream_details.Toppings
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											mem = Toppings[ID == row.Toppings];
+										row.Top_price=mem.sum(Top_price);
+										// row.Icecream_Total_Price=row.Ice_cream_price + row.Top_price;
+						)
+					}
+				}
+
+			}
+			fetch_personalized_price as "fetch personalized price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of Personalization
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											mem = Personalization[ID == input.Personalization];
+										input.custom_price = mem.per_price;
+										if(input.custom_price != null)
+										{
+											// 	input.Grand_Total = input.Grand_Total + input.custom_price;
+											for each  g in input.Personalization
+											{
+												input.Grand_Total = input.Grand_Total + g.sum(per_price);
+											}
+										}
+										else if(input.custom_price == 0)
+										{
+											input.Grand_Total = input.Grand_Total + input.custom_price;
+										}
+										// input.custom_price = mem.per_price;
+						)
+					}
+				}
+
+			}
+			calculate_ice_cream_flavo as "calculate ice cream flavour"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of Ice_Cream_details.Ice_cream_Flavors
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Icecream_Total_Price=row.Quantity * row.Ice_cream_price;
+						)
+					}
+				}
+
+			}
+			calculate_the_total_price as "calculate the total price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Ice_Cream_details.Ice_cream_Flavors
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											mem = Ice_cream_Flavors[ID == row.Ice_cream_Flavors];
+										row.Ice_cream_price=mem.Ice_Cream_Price;
+										row.Icecream_Total_Price=row.Ice_cream_price;
+										ver = Ice_cream_Flavors[ID == input.Ice_Cream_details.Ice_cream_Flavors];
+										row.Ice_cream_price=ver.Ice_Cream_Price;
+										row.Icecream_Total_Price=row.Ice_cream_price;
+						)
+					}
+				}
+
+			}
+			disable_a_fields as "disable a fields"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Grand_Total;
+					}
+				}
+
+			}
+			delete_a_row as "delete a row"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on delete row of Ice_Cream_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// input.Grand_Total = input.Grand_Total - row.Icecream_Total_Price;
+						)
+					}
+				}
+
+			}
+			Staless_form_ice_cream_up as "Staless form ice cream update"
+			{
+				type =  form
+				form = update_QTY1
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						fetching = Ice_cream_Flavors[ID == input.Ice_cream_Flavors];
+										fetching.Avl_Quantity=fetching.Avl_Quantity + input.Quantity;
+										openUrl("#Script:page.parent.refresh","parent window");
+					)
+					}
+				}
+			}
+			test as "test"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (I_have_one_more_requested == true)
+					{
+						show Personalization,custom_price;
+					}
+				}
+
+			}
+			upadate_personialzed as "upadate personialzed"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of Grand_Total
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// row.Icecream_Total_Price=row.Quantity * (row.Ice_cream_price + row.Top_price);
+										input.Grand_Total = 0;
+										for each  r in input.Ice_Cream_details
+										{
+											input.Grand_Total = input.Grand_Total + r.Icecream_Total_Price;
+										}
+						)
+					}
+				}
+
+			}
+			update_custom_price as "update custom price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+					status = inactive
+
+				on user input of custom_price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Personalization[ID == input.Personalization];
+										input.custom_price = var.per_price;
+										input.Grand_Total = input.Grand_Total + input.custom_price;
+						)
+					}
+				}
+
+			}
+			calculate_personalized as "calculate personalized"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Personalization
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Personalization[ID == input.Personalization];
+										input.custom_price = var.per_price;
+										input.Grand_Total = input.Ice_Cream_details.Icecream_Total_Price;
+										for each  g in input.Personalization
+										{
+											input.Grand_Total = input.Grand_Total + g.sum(per_price);
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			update_ice_cream_QTY as "update ice cream QTY"
+			{
+				type =  functions
+				form = Ice_cream_Flavors
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:update_QTY1","popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Ice_cream_Flavors
+			{
+				label placement = left
+			}
+			form Order
+			{
+				label placement = left
+			}
+			form Personalization
+			{
+				label placement = left
+			}
+			form Purchase_Ice_Cream
+			{
+				label placement = left
+			}
+			form Toppings
+			{
+				label placement = left
+			}
+			form update_QTY1
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Ice_cream_Flavors_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Flavors
+								Ice_Cream_Price as "Ice Cream Price"
+								Avl_Quantity as "Avl Quantity"
+								"Update Quantity"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Flavors
+								Ice_Cream_Price as "Ice Cream Price"
+								Avl_Quantity as "Avl Quantity"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Toppings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Toppings
+								Top_price as "Top price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Toppings
+								Top_price as "Top price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Orders
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Order_Name as "Order Name"
+								Address
+								Ice_Cream_details.Ice_cream_Flavors as "Ice Cream details"
+								I_have_one_more_requested as "I have one more requested"
+								Grand_Total as "Grand Total"
+								Personalization
+								custom_price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Order_Name as "Order Name"
+								Address
+								Ice_Cream_details.Ice_cream_Flavors as "Ice Cream details"
+								I_have_one_more_requested as "I have one more requested"
+								Grand_Total as "Grand Total"
+								Personalization
+								custom_price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Personalization_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Custom
+								per_price as "per price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Custom
+								per_price as "per price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Purchase_Ice_Creams
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Toppings
+								Quantity
+								Cost_price as "Cost price"
+								Ice_cream_Flavors as "Ice cream Flavors"
+								Quantity1 as "Quantity"
+								Top_Cost__Price as " Top Cost price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Toppings
+								Quantity
+								Cost_price as "Cost price"
+								Ice_cream_Flavors as "Ice cream Flavors"
+								Quantity1 as "Quantity"
+								Top_Cost__Price as " Top Cost price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Ice_cream_Flavors
+				{
+					displayname = "Ice cream Flavors"
+					icon = "tech-desktop"
+					form  Ice_cream_Flavors
+					{
+						icon = "tech-desktop"
+					}
+					report Ice_cream_Flavors_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Toppings
+				{
+					displayname = "Toppings"
+					icon = "food-muffin"
+					form  Toppings
+					{
+						icon = "food-muffin"
+					}
+					report All_Toppings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Orders
+				{
+					displayname = "Orders"
+					icon = "shopping-list"
+					form  Order
+					{
+						icon = "shopping-delivery-fast"
+					}
+					report All_Orders
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Personalization
+				{
+					displayname = "Personalization"
+					icon = "users-2-disabled"
+					form  Personalization
+					{
+						icon = "users-2-disabled"
+					}
+					report Personalization_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Purchase_Ice_Creams
+				{
+					displayname = "Purchase Ice Creams"
+					icon = "food-ice-cream-72"
+					form  Purchase_Ice_Cream
+					{
+						icon = "food-ice-cream-72"
+					}
+					report All_Purchase_Ice_Creams
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section update_QTY1
+				{
+					displayname = "update QTY"
+					icon = "tech-desktop"
+					form  update_QTY1
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Ice_cream_Flavors
+			{
+				label placement = auto
+			}
+			form Order
+			{
+				label placement = auto
+			}
+			form Personalization
+			{
+				label placement = auto
+			}
+			form Purchase_Ice_Cream
+			{
+				label placement = auto
+			}
+			form Toppings
+			{
+				label placement = auto
+			}
+			form update_QTY1
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Ice_cream_Flavors
+			{
+				label placement = auto
+			}
+			form Order
+			{
+				label placement = auto
+			}
+			form Personalization
+			{
+				label placement = auto
+			}
+			form Purchase_Ice_Cream
+			{
+				label placement = auto
+			}
+			form Toppings
+			{
+				label placement = auto
+			}
+			form update_QTY1
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

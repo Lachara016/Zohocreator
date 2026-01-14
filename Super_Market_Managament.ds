@@ -1,0 +1,1938 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst54
+ * Generated on : 27-Nov-2025 13:53:03
+ * Version      : 1.0
+ */
+ application "Super Market Managament"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Master
+		{
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Transaction_date
+			(
+				type = picklist	
+				displayname = "Transaction date"
+				values  = Transaction.ID
+    			displayformat = [Transaction_Date]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Multiproduct_Purchase_Master
+		{
+			displayname = "Multiproduct Purchase Master"
+			success message = "Multiproduct Purchase Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Purchase_Date
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Vendor_Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Types
+			(
+				type = picklist	
+				displayname = "Product Types"
+				values  = Product_Types.ID
+    			displayformat = [Product_Type]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+				Product_Types
+				(
+					type = picklist	
+					displayname = "Product Types"
+					values  = Product_Types.ID
+    				displayformat = [Product_Type]
+					sortorder = ascending
+					width = medium
+				)
+				Product_ID
+				(
+					type = picklist	
+					displayname = "Product ID"
+					values  = Product_Master[Product_Type.ID == input.Product_Types].ID
+    				displayformat = [product_ID + " - " + Product_Name]
+					sortorder = ascending
+					width = medium
+				)
+				Product_unit_Price
+				(
+					displayname = "Product_unit Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Product_QTY
+				(
+					type = number
+					width = medium
+				)
+				Product_Total_Price
+				(
+					displayname = "Product_Total Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Grand_Total
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Product_Master
+		{
+			displayname = "Product Master"
+			success message = "Product Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			product_ID
+			(
+    			type = autonumber
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Type
+			(
+				type = picklist	
+				displayname = "Product Type"
+				values  = Product_Types.ID
+    			displayformat = [Product_Type]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Available_Qty
+			(
+				type = number
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Cost_price
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Sale_price
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Product_Types
+		{
+			displayname = "Product Types"
+			success message = "Product Type Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Product_Type
+			(
+    			type = text
+				displayname = "Product Type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Purchase_master
+		{
+			displayname = "Purchase master"
+			success message = "Purchase Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Purchase_Date
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Types
+			(
+				type = picklist	
+				displayname = "Product Types"
+				values  = Product_Types.ID
+    			displayformat = [Product_Type]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product__ID
+			(
+				type = picklist	
+				displayname = "Product _ID"
+				values  = Product_Master[Product_Type.ID == input.Product_Types.ID].ID
+    			displayformat = [product_ID + " - " + Product_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Supplier_Name
+			(
+    			type = text
+				displayname = "Supplier Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Quantity
+			(
+				type = number
+				initial value = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_price
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Product_Price
+			(
+				displayname = "Total Product_Price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form purchase_product
+		{
+			displayname = "purchase product"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Product_Name
+			(
+    			type = text
+				displayname = "Product Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Types
+			(
+				type = picklist	
+				displayname = "Product Types"
+				values  = Product_Types.ID
+    			displayformat = [Product_Type]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Purchase_Qty
+			(
+				type = number
+				displayname = "Purchase Qty"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Transaction
+		{
+			success message = "Transaction Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Transaction_Date
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Transaction_ID
+			(
+    			type = autonumber
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Tran_Amount
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Transaction_details
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Transaction_Type
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Credit","Debit"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Product_Types
+		{
+			displayName = "All Product Types"
+			show all rows from Product_Types    
+			(
+				Product_Type as "Product Type"
+			)
+		}
+		default list All_Product_Masters
+		{
+			displayName = "All Product Masters"
+			show all rows from Product_Master    
+			(
+				Product_Type as "Product Type"
+				product_ID
+				Product_Name
+				Available_Qty
+				Cost_price
+				Sale_price
+				custom action "Avl Qty add"
+				(
+	  			workflow = update_product_QTY
+				show action in edit record menu = true
+				column header = "Avl Qty add"
+				condition = (Available_Qty < 100)
+				confirmation before execution
+				(
+					message for individual record = "Execute the Avl Qty add action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			group by
+			(
+				Product_Type ascending
+			)
+		}
+		default list All_Purchase_Masters
+		{
+			displayName = "All Purchase Masters"
+			show all rows from Purchase_master    
+			(
+				Purchase_Date
+				Supplier_Name as "Supplier Name"
+				Product_Quantity
+				Product_price
+				Product__ID as "Product _ID"
+				Product_Types as "Product Types"
+				Total_Product_Price as "Total Product_Price"
+			)
+			filters
+			(
+				Product_Types
+			)
+			sort by
+			(
+				Product_Types descending
+			)
+		}
+		default list All_Transactions
+		{
+			displayName = "All Transactions"
+			show all rows from Transaction    
+			(
+				Transaction_Date
+				Transaction_ID
+				Tran_Amount
+				Transaction_details
+				Transaction_Type
+			)
+		}
+		default list All_Multiproduct_Purchase_Masters
+		{
+			displayName = "All Multiproduct Purchase Masters"
+			show all rows from Multiproduct_Purchase_Master    
+			(
+				Purchase_Date
+				Vendor_Name
+				SubForm.Product_Types as "SubForm"
+				Grand_Total
+				Product_Types as "Product Types"
+			)
+		}
+		default list purchase_product_Report
+		{
+			displayName = "purchase product Report"
+			show all rows from purchase_product    
+			(
+				Purchase_Qty as "Purchase Qty"
+				Product_Name as "Product Name"
+				Product_Types as "Product Types"
+			)
+		}
+	}
+	pages
+	{
+		page Transaction1
+		{
+			displayname = "Transaction"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;Master&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos; name=&quot;product&quot;viewLinkName=&apos;All_Transactions&apos; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page super_market
+		{
+			displayname = "super market"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '20px'\n\tuppercase = 'true' \n\tunderline = 'true' \n\tbold = 'true' \n\titalic = 'true' \n\tfontFamily = 'RobotoSlab, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = '#F3F3F3'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = 'Super Market Management'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<chart \n\telementName='Chart'\n\n\ttype = 'Pie'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme4'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Purchase_master'\n\txfield = 'Product__ID.Product_Type'\n\tyfields = 'sum:Product_price'\n\/>\n\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Purchase_Masters'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void Test()
+                 {
+                 	productmap = Map();
+                 	valuedata = Map();
+                 	productmap.put("Product_Types","Ice cream");
+                 	productmap.put("Avl_Quantity",2);
+                 	productmap.put("Ice_Cream_Price",234);
+                 	valuedata.put("data",productmap);
+                 	updateproduct = invokeurl
+                 	[
+                 		url :"https://creator.zoho.in/api/v2.1/zappyworkssoftwaresolutionst54/ice-cream-parlor-application/form/Ice_cream_Flavors"
+                 		type :POST
+                 		parameters:valuedata.toString()
+                 		connection:"zoho_creator_connection"
+                 	];
+                 	info valuedata;
+                 	info updateproduct;
+                 	// _______________________________________________________________________________________________________________
+                 	// void Test_Api()
+                 	// {
+                 	// 	data = Map();
+                 	// 	datamap = Map();
+                 	// 	datamap.put("Name","Siva");
+                 	// 	datamap.put("Phone_Number","9654781230");
+                 	// 	datamap.put("Email","test@gmail.com");
+                 	// 	// 	info datamap;
+                 	// 	data.put("data",datamap);
+                 	// 	// 	info data;
+                 	// 	Response = invokeurl
+                 	// 	[
+                 	// 		url :"https://creator.zoho.in/api/v2.1/zappyworkssoftwaresolutionst22/test-app/form/Register"
+                 	// 		type :POST
+                 	// 		parameters:data.toString()
+                 	// 		connection:"zoho_creator_connection"
+                 	// 	];
+                 	// 	info Response;
+                 	// 	//  https://<base_url>/creator/v2.1/publish/<account_owner_name>/<app_link_name>/form/<form_link_name>
+                 	// }
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			update_product_master as "update product master"
+			{
+				type =  form
+				form = Purchase_master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											product_details = Product_Master[ID == input.Product__ID];
+										product_details.Available_Qty=product_details.Available_Qty + input.Product_Quantity;
+						)
+					}
+				}
+
+			}
+			Update_Product_master1 as "Update Product master"
+			{
+				type =  form
+				form = Purchase_master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											Tran_details = insert into Transaction
+										[
+											Tran_Amount=input.Product_Quantity * input.Product_price
+											Transaction_Date=zoho.currentdate
+											Transaction_details="purchase"
+											Transaction_Type="Debit"
+											Added_User=zoho.loginuser
+										];
+						)
+					}
+				}
+
+			}
+			calculate_product_Total_p as "calculate product Total price"
+			{
+				type =  form
+				form = Purchase_master
+				record event = on add or edit
+
+				on user input of Product_Quantity
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Total_Product_Price = input.Product_Quantity * input.Product_price;
+						)
+					}
+				}
+
+			}
+			fetch_product_total_price as "fetch product total price"
+			{
+				type =  form
+				form = Purchase_master
+				record event = on add or edit
+
+				on user input of Product__ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											pro = Product_Master[ID == input.Product__ID];
+										input.Product_price = pro.Sale_price;
+						)
+					}
+				}
+
+			}
+			fetch_product_unit_price as "fetch product unit price"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on user input of SubForm.Product_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											Product = Product_Master[ID == row.Product_ID];
+										row.Product_unit_Price=Product.Sale_price;
+						)
+					}
+				}
+
+			}
+			Disable_field as "Disable field"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Grand_Total,Purchase_Date;
+					}
+				}
+
+			}
+			calculate_Total_price as "calculate Total price"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on user input of SubForm.Product_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Product_Total_Price=row.Product_QTY * row.Product_unit_Price;
+						)
+					}
+				}
+
+			}
+			Grand_Total_Calculate as "Grand Total Calculate"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on user input of SubForm.Product_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Product_Total_Price=row.Product_QTY * row.Product_unit_Price;
+										input.Grand_Total = 0;
+										for each  r in input.SubForm
+										{
+											input.Grand_Total = input.Grand_Total + r.Product_Total_Price;
+										}
+						)
+					}
+				}
+
+			}
+			update_product_quantity as "update product quantity"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											trans = insert into Transaction
+										[
+											Transaction_Date=input.Purchase_Date
+											Transaction_Type="Debit"
+											Transaction_details="Multi purchase master purchase"
+											Tran_Amount=input.Grand_Total
+											Added_User=zoho.loginuser
+										];
+						)
+					}
+				}
+
+			}
+			Update_Product_master_for as "Update Product master form"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  a in input.SubForm
+										{
+											product = Product_Master[ID == a.Product_ID];
+											product.Available_Qty=product.Available_Qty + a.Product_QTY;
+										}
+						)
+					}
+				}
+
+			}
+			fetch_product_name as "fetch product name"
+			{
+				type =  form
+				form = purchase_product
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											product = Product_Master[Product_Name == input.Product_Name];
+										product.Available_Qty=product.Available_Qty + input.Purchase_Qty;
+										openUrl(" #Report:All_Product_Masters","parent window");
+						)
+					}
+				}
+
+			}
+			Auto_populate_product_typ as "Auto populate product types"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on user input of Product_Types
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											get_product = Product_Master[Product_Type.Product_Type == input.Product_Types.Product_Type];
+										// info get_product;
+										input.SubForm.clear();
+										for each  var in get_product
+										{
+											var1 = Multiproduct_Purchase_Master.SubForm();
+											var1.Product_ID=var.ID;
+											var1.Product_unit_Price=var.Sale_price;
+											var1.Product_Types=var.Product_Type;
+											input.SubForm.insert(var1);
+										}
+						)
+					}
+				}
+
+			}
+			delete_a_row as "delete a row"
+			{
+				type =  form
+				form = Multiproduct_Purchase_Master
+				record event = on add or edit
+
+				on delete row of SubForm
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Grand_Total = input.Grand_Total - row.Product_Total_Price;
+						)
+					}
+				}
+
+			}
+			open_url as "open url"
+			{
+				type =  form
+				form = Master
+				record event = on add
+
+				on user input of Transaction_date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:All_Transactions?zc_LoadIn=embed-product&Transaction_Date=" + input.Transaction_date.Transaction_Date,"same window");
+						)
+					}
+				}
+
+			}
+			product_to_add_to_ice_cre as "product to add to ice cream"
+			{
+				type =  form
+				form = Purchase_master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											productmap = Map();
+										valuedata = Map();
+										productmap.put("Product_Types","Ice cream");
+										productmap.put("Flavors","Black current");
+										productmap.put("Avl_Quantity",input.Product_Quantity);
+										productmap.put("Ice_Cream_Price",input.Product_price);
+										valuedata.put("data",productmap);
+										updateproduct = invokeurl
+										[
+											url :"https://creator.zoho.in/api/v2.1/zappyworkssoftwaresolutionst54/ice-cream-parlor-application/form/Ice_cream_Flavors"
+											type :POST
+											parameters:valuedata.toString()
+											connection:"zoho_creator_connection"
+										];
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			calculate_ as "calculate "
+			{
+				type =  schedule
+				start = "2025-09-07 19:30:00"
+				time zone = "Asia/Kolkata"
+				on start
+				{
+				}
+			}
+		}
+
+
+
+
+		functions
+		{
+			update_product_QTY as "update product QTY"
+			{
+				type =  functions
+				form = Product_Master
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:purchase_product?Product_Name=" + input.Product_Name + "&Product_Types=" + input.Product_Type,"popup window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_creator_connection
+		(
+			displayname = "Zoho Creator Connection"
+			connector = zohocreator
+			permissions = {"bulk_delete_records","bulk_update_records","create_record","delete_record","download_bulk_read_result","download_file","download_file_from_subform","execute_ai_skill","execute_custom_api","get_all_records","get_applications","get_applications_by_workspace","get_fields","get_forms","get_pages","get_record","get_reports","get_sections","get_the_status_of_the_bulk_read_job","search_record","update_record","upload_file","zc_connector"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Master
+			{
+				label placement = left
+			}
+			form Multiproduct_Purchase_Master
+			{
+				label placement = left
+			}
+			form Product_Master
+			{
+				label placement = left
+			}
+			form Product_Types
+			{
+				label placement = left
+			}
+			form Purchase_master
+			{
+				label placement = left
+			}
+			form purchase_product
+			{
+				label placement = left
+			}
+			form Transaction
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Product_Types
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Product_Type as "Product Type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Product_Type as "Product Type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Product_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Product_Type as "Product Type"
+								product_ID
+								Product_Name
+								Available_Qty
+								Cost_price
+								Sale_price
+								"Avl Qty add"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Product_Type as "Product Type"
+								product_ID
+								Product_Name
+								Available_Qty
+								Cost_price
+								Sale_price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Purchase_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Purchase_Date
+								Supplier_Name as "Supplier Name"
+								Product_Quantity
+								Product_price
+								Product__ID as "Product _ID"
+								Product_Types as "Product Types"
+								Total_Product_Price as "Total Product_Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Purchase_Date
+								Supplier_Name as "Supplier Name"
+								Product_Quantity
+								Product_price
+								Product__ID as "Product _ID"
+								Product_Types as "Product Types"
+								Total_Product_Price as "Total Product_Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Transactions
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Transaction_Date
+								Transaction_ID
+								Tran_Amount
+								Transaction_details
+								Transaction_Type
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Transaction_Date
+								Transaction_ID
+								Tran_Amount
+								Transaction_details
+								Transaction_Type
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Multiproduct_Purchase_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Purchase_Date
+								Vendor_Name
+								SubForm.Product_Types as "SubForm"
+								Grand_Total
+								Product_Types as "Product Types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Purchase_Date
+								Vendor_Name
+								SubForm.Product_Types as "SubForm"
+								Grand_Total
+								Product_Types as "Product Types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report purchase_product_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Purchase_Qty as "Purchase Qty"
+								Product_Name as "Product Name"
+								Product_Types as "Product Types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Purchase_Qty as "Purchase Qty"
+								Product_Name as "Product Name"
+								Product_Types as "Product Types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Product_Types
+				{
+					displayname = "Product Types"
+					icon = "tech-2-pci-card"
+					form  Product_Types
+					{
+						icon = "tech-2-pci-card"
+					}
+					report All_Product_Types
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Product_Masters
+				{
+					displayname = "Product Masters"
+					icon = "education-book-open"
+					form  Product_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Product_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Purchase_Masters
+				{
+					displayname = "Purchase Masters"
+					icon = "shopping-pos"
+					form  Purchase_master
+					{
+						icon = "sport-crown"
+					}
+					report All_Purchase_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Transactions
+				{
+					displayname = "Transactions"
+					icon = "business-calculator"
+					form  Transaction
+					{
+						icon = "shopping-receipt"
+					}
+					report All_Transactions
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Multiproduct_Purchase_Masters
+				{
+					displayname = "Multiproduct Purchase Masters"
+					icon = "shopping-pos"
+					form  Multiproduct_Purchase_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Multiproduct_Purchase_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section purchase_product
+				{
+					displayname = "purchase product"
+					icon = "tech-desktop"
+					form  purchase_product
+					{
+						icon = "tech-desktop"
+					}
+					report purchase_product_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Master
+				{
+					displayname = "Master"
+					icon = "sport-crown"
+					form  Master
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Transaction
+				{
+					displayname = "Transaction"
+					icon = "shopping-receipt"
+					page Transaction1
+					{
+						icon = "shopping-receipt"
+					}
+					page super_market
+					{
+						icon = "shopping-stock"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Master
+			{
+				label placement = auto
+			}
+			form Multiproduct_Purchase_Master
+			{
+				label placement = auto
+			}
+			form Product_Master
+			{
+				label placement = auto
+			}
+			form Product_Types
+			{
+				label placement = auto
+			}
+			form Purchase_master
+			{
+				label placement = auto
+			}
+			form purchase_product
+			{
+				label placement = auto
+			}
+			form Transaction
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = green
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Master
+			{
+				label placement = auto
+			}
+			form Multiproduct_Purchase_Master
+			{
+				label placement = auto
+			}
+			form Product_Master
+			{
+				label placement = auto
+			}
+			form Product_Types
+			{
+				label placement = auto
+			}
+			form Purchase_master
+			{
+				label placement = auto
+			}
+			form purchase_product
+			{
+				label placement = auto
+			}
+			form Transaction
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = green
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

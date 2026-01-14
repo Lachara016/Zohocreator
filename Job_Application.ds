@@ -1,0 +1,2019 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst54
+ * Generated on : 27-Nov-2025 13:52:23
+ * Version      : 1.0
+ */
+ application "Job Application"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Application
+		{
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			DOB
+			(
+				type = picklist	
+				values  = Job_app.ID
+    			displayformat = [DOB]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+				type = picklist	
+				values  = Job_app.ID
+    			displayformat = [Email]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Application_status
+		{
+			displayname = "Application status"
+			success message = "Application Status Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_opening
+			(
+				type = picklist	
+				displayname = "Job opening"
+				values  = Job_opening.ID
+    			displayformat = [Job_Title]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Application_Status
+			(
+				type = radiobuttons
+				displayname = "Application Status"
+				maxchar = 100
+				values = {"Selected","Rejected"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Reject for job","Invite for Technical Round","Short list of job","Apply for job","Rejected for Technical round","Invite for HR round","Rejected  for this job","offer letter"}
+			}
+		}
+		form Job_app
+		{
+			displayname = "Job app"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Application_Number
+			(
+    			type = text
+				displayname = "Application Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			DOB
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Age
+			(
+				type = number
+				maxchar = 12
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female","Others"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			PhoneNo
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Blood_Group
+			(
+				type = picklist
+				maxchar = 100
+				values = {"O+ve","B+ve","A+ve","AB-ve"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Communication_Address
+			(
+    			type = address
+				displayname = "Communication Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			same_as_Communication_Address
+			(
+    			type = checkbox
+				displayname = "same as Communication Address"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Permanent_Address
+			(
+    			type = address
+				displayname = "Permanent Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Qualification
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_Title
+			(
+				type = picklist	
+				displayname = "Job Title"
+				values  = Job_opening.ID
+    			displayformat = [Job_Title]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_description
+			(
+    			type = textarea
+				displayname = "Job description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Are_you_a_fresher_Experienced
+			(
+				type = picklist
+				displayname = "Are you a fresher/Experienced"
+				maxchar = 100
+				values = {"Fresher","Experienced"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Experience_details
+			(
+				type = grid
+				displayname = "Experience details"
+				Current_Company_Name
+				(
+    				type = text
+					displayname = "Current Company Name"
+					width = medium
+				)
+				Designation
+				(
+    				type = text
+					width = medium
+				)
+				Experience
+				(
+					type = picklist
+					displayname = "Experince"
+					maxchar = 100
+					values = {"1-3yrs","3-5yrs","6months"}
+					width = medium
+				)
+				Current_CTC
+				(
+					displayname = "Current CTC"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				Expected_CTC
+				(
+					displayname = "Expected CTC"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				Reason_for_leaving
+				(
+    				type = textarea
+					displayname = "Reason for leaving"
+					height = 100px
+					width = medium
+				)
+				Checkbox
+				(
+					type = checkboxes	
+					values = {"6month","8month","Choice 3"}
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Resume
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Application_Status
+			(
+				type = picklist
+				displayname = "Application Status"
+				maxchar = 100
+				values = {"Selected","Rejected","waiting list"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Declaration
+			(
+    			type = checkbox
+				initial value = false
+    			description
+    			[
+    				type = help_text
+    			 	message = "I hereby declare that the information furnished in this job application is true and correct to the best of my knowledge. I assure you that, if selected, I will perform my duties with sincerity and integrity."
+    			]
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Job_fliter
+		{
+			displayname = "Job fliter"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Jobs
+			(
+				type = picklist	
+				values  = Job_opening.ID
+    			displayformat = [Job_Title]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Job_opening
+		{
+			displayname = "Job opening"
+			success message = "Job Opening Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Job_Title
+			(
+    			type = text
+				displayname = "Job Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			No_of_opening1
+			(
+				type = number
+				displayname = "No of opening"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form opening
+		{
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			DOB
+			(
+				type = picklist	
+				values  = Job_app.ID
+    			displayformat = [DOB]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+	}
+	reports
+	{
+		default list Job_app_Report
+		{
+			displayName = "Job app Report"
+			show all rows from Job_app    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				DOB
+				Age
+				Gender
+				Email
+				PhoneNo
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Blood_Group
+				Communication_Address  as "Communication Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Resume
+				Job_Title as "Job Title"
+				same_as_Communication_Address as "same as Communication Address"
+				Permanent_Address  as "Permanent Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Are_you_a_fresher_Experienced as "Are you a fresher/Experienced"
+				Declaration
+				Experience_details.Current_Company_Name as "Experience details"
+				Application_Number as "Application Number"
+				Job_description as "Job description"
+				Application_Status as "Application Status"
+				custom action "Update Status"
+				(
+	  			workflow = Application_status
+				show action in edit record menu = true
+				column header = "Update Status"
+				)
+				Qualification
+			)
+		}
+		default list All_Job_Openings
+		{
+			displayName = "All Job Openings"
+			show all rows from Job_opening    
+			(
+				No_of_opening1 as "No of opening"
+				Job_Title as "Job Title"
+				Job_Description
+			)
+		}
+		default list All_Application_Statuses
+		{
+			displayName = "All Application Statuses"
+			show all rows from Application_status    
+			(
+				Name
+				Application_Status as "Application Status"
+				Job_opening as "Job opening"
+				Email
+			)
+		}
+		pivotchart job_chart
+		{ 
+			displayname = "job chart"
+						report properties
+			(
+				records displayed = all_records
+				allow export = false
+				allow drilldown and view underlying data = false
+		
+			)
+
+			based on Autoview_1757521980863_Job_app
+				show all rows from Job_app
+				(
+			Application_Number  as "Application Number"
+			Name 
+ 			(
+ 				first_name as "Name"
+ 				prefix as "Name.Prefix"
+ 				last_name as "Name.Last Name"
+ 				suffix as "Name.Suffix"
+     			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+ 			)
+			DOB 
+			Age 
+			Gender 
+			Email 
+			PhoneNo 
+			Blood_Group 
+			Communication_Address  as "Communication Address"
+ 			(
+ 				address_line_1 as "Communication Address"
+ 				address_line_2 as "Communication Address.Address Line 2"
+ 				district_city as "Communication Address.City / District"
+ 				state_province as "Communication Address.State / Province"
+ 				postal_Code as "Communication Address.Postal Code"
+ 				country as "Communication Address.Country"
+ 				latitude as "Communication Address.latitude"
+ 				longitude as "Communication Address.longitude"
+     			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country+""+latitude+""+longitude]
+ 			)
+			same_as_Communication_Address  as "same as Communication Address"
+			Permanent_Address  as "Permanent Address"
+ 			(
+ 				address_line_1 as "Permanent Address"
+ 				address_line_2 as "Permanent Address.Address Line 2"
+ 				district_city as "Permanent Address.City / District"
+ 				state_province as "Permanent Address.State / Province"
+ 				postal_Code as "Permanent Address.Postal Code"
+ 				country as "Permanent Address.Country"
+ 				latitude as "Permanent Address.latitude"
+ 				longitude as "Permanent Address.longitude"
+     			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country+""+latitude+""+longitude]
+ 			)
+			Qualification 
+			Job_Title  as "Job Title"
+			Are_you_a_fresher_Experienced  as "Are you a fresher/Experienced"
+			Resume 
+			Application_Status  as "Application Status"
+			Declaration 
+				)
+		}
+	}
+	pages
+	{
+		page Job
+		{
+			displayname = "Job"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&quot;Job_fliter&quot; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos; name=&quot;Open&quot; viewLinkName=&quot;All_Job_Openings&quot; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page App
+		{
+			displayname = "App"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet1' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;Application&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos; name=&apos;Number&apos; viewLinkName=&apos;Job_app_Report&apos;params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page OPEN
+		{
+			displayname = "OPEN"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet2' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet2()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;opening&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos;name=&apos;run&apos; viewLinkName=&apos;Job_app_Report&apos; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			disable_field as "disable field"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Age,Application_Number,Job_description;
+					}
+					actions 
+					{
+						hide Application_Number;
+					}
+				}
+
+			}
+			fetch_Job_Description as "fetch Job Description"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on user input of Job_Title
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Job_description = input.Job_Title.Job_Description;
+						)
+					}
+				}
+
+			}
+			calculate_age as "calculate age"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on user input of DOB
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.DOB != null)
+										{
+											var = input.DOB.yearsBetween(today);
+											if(var >= 18 && var <= 28)
+											{
+												input.Age = var;
+											}
+											else
+											{
+												alert "cannot Apply";
+												input.Age = null;
+												input.DOB = null;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			communication_address as "communication address"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on user input of same_as_Communication_Address
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.same_as_Communication_Address == true)
+										{
+											input.Permanent_Address = input.Communication_Address;
+											disable Permanent_Address;
+										}
+										else
+										{
+											enable Permanent_Address;
+											input.Permanent_Address = null;
+										}
+						)
+					}
+				}
+
+			}
+			Generate_Application_No as "Generate Application No"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on user input of Job_Title
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											num = input.Job_Title;
+										pro = input.Job_Title.Job_Title.subString(0,3).toUpperCase();
+										count = Job_app[Job_Title == Job_Title].count();
+										var = (100 + count).toString();
+										input.Application_Number = pro + "-" + var;
+						)
+					}
+				}
+
+			}
+			Hide_Application_Status as "Hide Application Status"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Application_Status;
+					}
+				}
+
+			}
+			hide_fresher_or_experince as "hide fresher or experince"
+			{
+				type =  form
+				form = Job_app
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Experience_details;
+						)
+					}
+				}
+
+			}
+			show_a_experinced as "show a experinced"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on user input of Are_you_a_fresher_Experienced
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Are_you_a_fresher_Experienced == "Experienced")
+										{
+											show Experience_details;
+										}
+						)
+					}
+				}
+
+			}
+			Generate_email as "Generate email"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+					status = inactive
+
+				on user input of Application_Status
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Application_Status == "Selected")
+										{
+											sendmail
+											[
+												from :zoho.loginuserid
+												to :input.Email
+												subject :"Info tech"
+												message :"You are selected"
+											]
+										}
+										else if(Application_Status == "Rejected")
+										{
+											sendmail
+											[
+												from :zoho.loginuserid
+												to :input.Email
+												subject :"Info tech"
+												message :"You are rejected"
+											]
+										}
+						)
+					}
+				}
+
+			}
+			Generate_Email1 as "Generate Email"
+			{
+				type =  form
+				form = Application_status
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Application_Status == "Selected")
+										{
+											sendmail
+											[
+												from :zoho.loginuserid
+												to :input.Email
+												subject :"Info tech"
+												message :"You are selected"
+											]
+										}
+										// else if(Application_Status == "Rejected")
+										// {
+										// sendmail
+										// [
+										// 	from: zoho.loginuserid
+										// 	to:input.Email
+										// 	subject: "Info tech"
+										// 	message: "You are rejected"
+										// ]
+										// }
+						)
+					}
+				}
+
+			}
+			open_url as "open url"
+			{
+				type =  form
+				form = Job_fliter
+				record event = on add
+
+				on user input of Jobs
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:All_Job_Openings?zc_LoadIn=embed-Open&Job_Title=" + input.Jobs.Job_Title,"same window");
+						)
+					}
+				}
+
+			}
+			open_url1 as "open url"
+			{
+				type =  form
+				form = Application
+				record event = on add
+
+				on user input of Email
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:Job_app_Report?zc_LoadIn=embed-Number&Email=" + input.Email.Email + "&DOB=" + input.DOB,"same window");
+						)
+					}
+				}
+
+			}
+			Integration_zoho_recuritm as "Integration zoho recuritment"
+			{
+				type =  form
+				form = Job_opening
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											mem = Map();
+										mem.put("Job_Opening_Name",input.Job_Title);
+										mem.put("Client_Name","tester");
+										mem.put("Target_Date","1999-03-29");
+										mem.put("Industry","test");
+										job = List();
+										job.add(mem);
+										mem1 = Map();
+										mem1.put("data",job);
+										res = invokeurl
+										[
+											url :"https://recruit.zoho.in/recruit/v2/JobOpenings"
+											type :POST
+											parameters:mem1.toString()
+											connection:"zoho_recruit_connection"
+										];
+										info res;
+						)
+					}
+				}
+
+			}
+			Integration_zoho_recuritm1 as "Integration zoho recuritment"
+			{
+				type =  form
+				form = Job_app
+				record event = on add or edit
+
+				on success
+				{
+				}
+
+			}
+		}
+
+
+
+
+		blueprint
+		{
+    			job_Application as "job Application"
+    			{
+        			type = Blueprint
+        			form = Application_status
+        			start
+        			{
+            			start stage = "Apply for job"
+            			chart data
+            			{
+                			from port : B
+                			to port   : T3
+                			position  : "0 0"
+                			path      : [27.849999999999994,36.84,27.849999999999994,46.84,27.849999999999994,48.42,27.85,48.42,27.85,50,27.85,60]
+            			}
+        			}
+        			stages
+        			{
+           			"Reject for job"
+           			{
+               			chart data
+               			{
+                   			position : "234 166.9251281347678"
+               			}
+           			}
+           			"Invite for Technical Round"
+           			{
+               			chart data
+               			{
+                   			position : "-293 286.92512813476776"
+               			}
+           			}
+           			"Short list of job"
+           			{
+               			chart data
+               			{
+                   			position : "-238 165.9251281347678"
+               			}
+           			}
+           			"Apply for job"
+           			{
+               			chart data
+               			{
+                   			position : "-34.10903116958346 60"
+               			}
+           			}
+           			"Rejected for Technical round"
+           			{
+               			chart data
+               			{
+                   			position : "-6 392.92512813476776"
+               			}
+           			}
+           			"Invite for HR round"
+           			{
+               			chart data
+               			{
+                   			position : "-452 421.92512813476776"
+               			}
+           			}
+           			"Rejected  for this job"
+           			{
+               			chart data
+               			{
+                   			position : "-87.63445222160124 504.89696465114594"
+               			}
+           			}
+           			"offer letter"
+           			{
+               			chart data
+               			{
+                   			position : "-566.5294724941692 519.5570162921429"
+               			}
+           			}
+        			}
+        			transitions
+        			{
+    				Invite_for_the_next_round as "Invite for the  next round"
+    				{
+         				type = normal
+         				from stage = "Short list of job"
+         				to stage = "Invite for Technical Round"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T4
+             				path      : [-169.06199544174467,217.5329579299894,-169.06199544174467,227.5329579299894,-169.06199544174467,252.22904303237857,-160.5739935968054,252.22904303237857,-160.5739935968054,276.92512813476776,-160.5739935968054,286.92512813476776]
+        				}
+  				}
+    				Not_Selected_Application as "Not Selected Application"
+    				{
+         				type = normal
+         				from stage = "Apply for job"
+         				to stage = "Reject for job"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B4
+             				to port   : T1
+             				path      : [45.336343723194474,111.60782979522162,45.336343723194474,121.60782979522162,45.336343723194474,139.2664789649947,261.3981758968598,139.2664789649947,261.3981758968598,156.9251281347678,261.3981758968598,166.9251281347678]
+        				}
+  				}
+    				Not_Selected_HR as "Not Selected HR"
+    				{
+         				type = normal
+         				from stage = "Invite for HR round"
+         				to stage = "Rejected  for this job"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B4
+             				to port   : T1
+             				path      : [-346.6499721938106,473.5329579299894,-346.6499721938106,483.5329579299894,-346.6499721938106,489.21496129056766,-52.79994870836769,489.21496129056766,-52.79994870836769,494.89696465114594,-52.79994870836769,504.89696465114594]
+        				}
+  				}
+    				Rejected_TR as "Rejected  TR"
+    				{
+         				type = normal
+         				from stage = "Invite for Technical Round"
+         				to stage = "Rejected for Technical round"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B4
+             				to port   : T3
+             				path      : [-160.5739935968054,338.5329579299894,-160.5739935968054,348.5329579299894,-160.5739935968054,365.72904303237857,103.40149790542331,365.72904303237857,103.40149790542331,382.92512813476776,103.40149790542331,392.92512813476776]
+        				}
+  				}
+    				Selected_for_Application1 as "Selected  for Application"
+    				{
+         				type = normal
+         				from stage = "Apply for job"
+         				to stage = "Short list of job"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T5
+             				path      : [27.85,111.60782979522162,27.85,121.60782979522162,27.85,138.7664789649947,-129.43665906957446,138.7664789649947,-129.43665906957446,155.9251281347678,-129.43665906957446,165.9251281347678]
+        				}
+  				}
+    				Selected_for_HR_Round1 as "Selected  for HR Round"
+    				{
+         				type = normal
+         				from stage = "Invite for Technical Round"
+         				to stage = "Invite for HR round"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T2
+             				path      : [-191.30549519760405,338.5329579299894,-191.30549519760405,348.5329579299894,-191.30549519760405,380.22904303237857,-394.5749860969053,380.22904303237857,-394.5749860969053,411.92512813476776,-394.5749860969053,421.92512813476776]
+        				}
+  				}
+    				Selected_HR_round as "Selected HR round"
+    				{
+         				type = normal
+         				from stage = "Invite for HR round"
+         				to stage = "offer letter"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B2
+             				to port   : T5
+             				path      : [-394.5749860969053,473.5329579299894,-394.5749860969053,483.5329579299894,-394.5749860969053,496.5449871110661,-481.3519169844793,496.5449871110661,-481.3519169844793,509.55701629214286,-481.3519169844793,519.5570162921429]
+        				}
+  				}
+        			}
+    			}
+		}
+
+
+		functions
+		{
+			Application_status as "Application status"
+			{
+				type =  functions
+				form = Job_app
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Application_status?Name=" + input.Name + "&Job_opening=" + input.Job_Title + "&Email=" + input.Email,"popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"User"
+			{
+				name = "User"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "User Profile\n"
+				ModulePermissions
+				{
+					Job_app
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Application_status
+					{
+						allFieldsVisible= true 
+					}
+					Job_fliter
+					{
+						allFieldsVisible= true 
+					}
+					Job_opening
+					{
+						allFieldsVisible= true 
+					}
+					Application
+					{
+						allFieldsVisible= true 
+					}
+					opening
+					{
+						allFieldsVisible= true 
+					}
+					Application_status_BlueprintJob
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"manager"
+					{
+						description = ""
+					}
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_recruit_connection
+		(
+			displayname = "Zoho Recruit Connection"
+			connector = zohorecruit
+			permissions = {"create_candidates_record","create_clients_record","create_contacts_record","create_jobopenings_record","fetch_all_candidates_records","fetch_all_clients_records","fetch_all_contacts_records","fetch_all_jobopenings_records","fetch_candidates_record","fetch_clients_record","fetch_contacts_record","fetch_jobopenings_record","search_candidates_record","search_clients_record","search_contacts_record","search_jobopenings_record","sync_candidates_records","sync_clients_records","sync_contacts_records","sync_jobopenings_records","update_candidates_record","update_clients_record","update_contacts_record","update_jobopenings_record"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Application
+			{
+				label placement = left
+			}
+			form Application_status
+			{
+				label placement = left
+			}
+			form Job_app
+			{
+				label placement = left
+			}
+			form Job_fliter
+			{
+				label placement = left
+			}
+			form Job_opening
+			{
+				label placement = left
+			}
+			form opening
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Job_app_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								DOB
+								Age
+								Gender
+								Email
+								PhoneNo
+								Blood_Group
+								"Update Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								DOB
+								Age
+								Gender
+								Email
+								PhoneNo
+								Blood_Group
+								Communication_Address as "Communication Address"
+								Resume
+								Job_Title as "Job Title"
+								same_as_Communication_Address as "same as Communication Address"
+								Permanent_Address as "Permanent Address"
+								Are_you_a_fresher_Experienced as "Are you a fresher/Experienced"
+								Declaration
+								Experience_details.Current_Company_Name as "Experience details"
+								Application_Number as "Application Number"
+								Job_description as "Job description"
+								Application_Status as "Application Status"
+								Qualification
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Job_Openings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								No_of_opening1 as "No of opening"
+								Job_Title as "Job Title"
+								Job_Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								No_of_opening1 as "No of opening"
+								Job_Title as "Job Title"
+								Job_Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Application_Statuses
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Application_Status as "Application Status"
+								Job_opening as "Job opening"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Application_Status as "Application Status"
+								Job_opening as "Job opening"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report job_chart
+			{
+				legend = RIGHT
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Job_app
+				{
+					displayname = "Job app"
+					icon = "design-mobile-dev"
+					form  Job_app
+					{
+						icon = "design-mobile-dev"
+					}
+					report Job_app_Report
+					{
+						icon = "tech-desktop"
+					}
+ 
+					report job_chart
+					{
+						icon = "design-mobile-dev"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Job_Openings
+				{
+					displayname = "Job Openings"
+					icon = "users-2-a-time"
+					form  Job_opening
+					{
+						icon = "users-2-a-time"
+					}
+					report All_Job_Openings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Application_Statuses
+				{
+					displayname = "Application Statuses"
+					icon = "users-2-woman"
+					form  Application_status
+					{
+						icon = "health-heartbeat-16"
+					}
+					report All_Application_Statuses
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Job_fliter
+				{
+					displayname = "Job fliter"
+					icon = "users-2-a-time"
+					form  Job_fliter
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Job
+				{
+					displayname = "Job"
+					icon = "users-2-a-time"
+					page Job
+					{
+						icon = "users-2-a-time"
+					}
+					page App
+					{
+						icon = "design-app"
+					}
+					page OPEN
+					{
+						icon = "shopping-box-3d-67"
+					}
+				}
+				section Application
+				{
+					displayname = "Application"
+					icon = "users-2-woman"
+					form  Application
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section opening
+				{
+					displayname = "opening"
+					icon = "weather-sun"
+					form  opening
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Application
+			{
+				label placement = auto
+			}
+			form Application_status
+			{
+				label placement = auto
+			}
+			form Job_app
+			{
+				label placement = auto
+			}
+			form Job_fliter
+			{
+				label placement = auto
+			}
+			form Job_opening
+			{
+				label placement = auto
+			}
+			form opening
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Application
+			{
+				label placement = auto
+			}
+			form Application_status
+			{
+				label placement = auto
+			}
+			form Job_app
+			{
+				label placement = auto
+			}
+			form Job_fliter
+			{
+				label placement = auto
+			}
+			form Job_opening
+			{
+				label placement = auto
+			}
+			form opening
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+	reports configuration
+	{
+	
+		Version = 2000046072075
+		Key     = "V4AZt6BzBB9y8rFzRCAHZamxtmvSXBm2QCtFpC2rSZPHwynwAxNn1HC9FZUaneJh98Wrhm4K76drrYxp5gDOJkN35SpPduTbzRdS"
+	}
+}

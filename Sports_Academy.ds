@@ -1,0 +1,1716 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst54
+ * Generated on : 27-Nov-2025 13:50:36
+ * Version      : 1.0
+ */
+ application "Sports Academy"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Slots_Time
+		{
+			displayname = "Slots Time"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Sports_Master
+			(
+				type = picklist	
+				displayname = "Sports Master"
+				values  = Sports_Master.ID
+    			displayformat = [Sports_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Slot_time
+			(
+    			type = text
+				displayname = "Slot time"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form sports_days
+		{
+			displayname = "sports days"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Sports_Master
+			(
+				type = picklist	
+				displayname = "Sports Master"
+				values  = Sports_Master.ID
+    			displayformat = [Sports_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sports_days
+			(
+    			type = text
+				displayname = "sports days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Sports_Enrollment
+		{
+			displayname = "Sports Enrollment"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Student_ID
+			(
+				type = picklist	
+				displayname = "Student ID"
+				values  = Student_Enrollment.ID
+    			displayformat = [Student_ID + " - " + Student_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Sports_details
+			(
+				type = grid
+				displayname = "Sports details"
+				values  = Student.ID
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Grand_Total
+			(
+				displayname = "Grand Total"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Sports_Master
+		{
+			displayname = "Sports Master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Sports_Name
+			(
+    			type = text
+				displayname = "Sports Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Fee_per_month
+			(
+				displayname = "Fee per month "
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			No_of_slot_per_month
+			(
+				type = number
+				displayname = "No of slot per month"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Single_Line
+			(
+    			type = text
+				displayname = "Single Line"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Student
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Sports_Name
+			(
+				type = picklist	
+				displayname = "Sports Name"
+				values  = Sports_Master.ID
+    			displayformat = [Sports_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sports_days
+			(
+				type = picklist	
+				displayname = "sports days"
+				values  = sports_days.ID
+    			displayformat = [sports_days]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			No_of_slot_per_month
+			(
+				type = number
+				displayname = "No of slot per month"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Slots_Time
+			(
+				type = list	
+				displayname = "Slots Time"
+				values  = Slots_Time.ID
+    			displayformat = [Slot_time]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Fee_per_month
+			(
+				displayname = "Fee per month "
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Student_Enrollment
+		{
+			displayname = "Student Enrollment"
+			success message = "Student Enrollment Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Student_ID
+			(
+    			type = text
+				displayname = "Student ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Student_Name
+			(
+    			type = name
+				displayname = " Student Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			DOB
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Phone_No
+			(
+    			type = phonenumber
+				displayname = "Phone No"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Parent_Name
+			(
+    			type = name
+				displayname = "Parent Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Emergency_Contact_No
+			(
+				type = number
+				displayname = "Emergency Contact No"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list Sports_Master_Report
+		{
+			displayName = "Sports Master Report"
+			show all rows from Sports_Master    
+			(
+				Sports_Name as "Sports Name"
+				Fee_per_month as "Fee per month "
+				No_of_slot_per_month as "No of slot per month"
+				Single_Line as "Single Line"
+			)
+		}
+		default list All_Student_Enrollments
+		{
+			displayName = "All Student Enrollments"
+			show all rows from Student_Enrollment    
+			(
+				Student_Name  as " Student Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_No as "Phone No"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Parent_Name  as "Parent Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Emergency_Contact_No as "Emergency Contact No"
+				DOB
+				Student_ID as "Student ID"
+			)
+		}
+		default list Sports_Enrollment_Report
+		{
+			displayName = "Sports Enrollment Report"
+			show all rows from Sports_Enrollment    
+			(
+				Grand_Total as "Grand Total"
+				Student_ID as "Student ID"
+			)
+		}
+		default list sports_days_Report
+		{
+			displayName = "sports days Report"
+			show all rows from sports_days    
+			(
+				Sports_Master as "Sports Master"
+				sports_days as "sports days"
+			)
+		}
+		default list Slots_Time_Report
+		{
+			displayName = "Slots Time Report"
+			show all rows from Slots_Time    
+			(
+				Sports_Master as "Sports Master"
+				Slot_time as "Slot time"
+			)
+		}
+		default list Student_Report
+		{
+			displayName = "Student Report"
+			show all rows from Student    
+			(
+				Slots_Time as "Slots Time"
+				Sports_Name as "Sports Name"
+				Fee_per_month as "Fee per month "
+				No_of_slot_per_month as "No of slot per month"
+				sports_days as "sports days"
+			)
+		}
+	}
+	pages
+	{
+		page course
+		{
+			displayname = "course"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n  &lt;meta charset=&quot;UTF-8&quot;&gt;\n  &lt;title&gt;Available Courses - Online Course Management System&lt;\/title&gt;\n  &lt;style&gt;\n    * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}\n    body {background: #f9f9f9; color: #333;}\n\n    header {\n      background: #004aad; color: #fff; padding: 20px 40px;\n      text-align: center; font-size: 22px; font-weight: bold;\n    }\n\n    .section {padding: 60px 40px; text-align: center;}\n    .section h2 {font-size: 30px; margin-bottom: 30px; color: #004aad;}\n\n    .courses {\n      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n      gap: 20px; max-width: 1100px; margin: 0 auto;\n    }\n    .card {\n      background: #fff; padding: 20px; border-radius: 12px;\n      box-shadow: 0 4px 8px rgba(0,0,0,0.1);\n      transition: transform 0.3s; cursor: pointer;\n      text-align: left;\n    }\n    .card:hover {transform: translateY(-6px);}\n    .card img {width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;}\n    .card h3 {color: #0072ff; margin-bottom: 10px;}\n    .card p {font-size: 15px; color: #555; margin-bottom: 8px;}\n    .card .info {font-size: 14px; font-weight: bold; color: #004aad;}\n\n    footer {\n      margin-top: 50px;\n      background: #004aad; color: #fff; padding: 20px; text-align: center;\n    }\n  &lt;\/style&gt;\n&lt;\/head&gt;\n&lt;body&gt;\n  &lt;header&gt;\n    Available Courses - Online Course Management System\n  &lt;\/header&gt;\n\n  &lt;!-- Course Section --&gt;\n  &lt;section class=&quot;section&quot;&gt;\n    &lt;h2&gt;Available Courses&lt;\/h2&gt;\n    &lt;div class=&quot;courses&quot;&gt;\n      &lt;div class=&quot;card&quot;&gt;\n        &lt;img src=&quot;https:\/\/img.icons8.com\/color\/480\/java-coffee-cup-logo.png&quot; alt=&quot;Java&quot;&gt;\n        &lt;h3&gt;Java Programming&lt;\/h3&gt;\n        &lt;p&gt;Learn OOP concepts, multithreading, collections, and more.&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Duration: 3 Months&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Fee: \u20B915000&lt;\/p&gt;\n      &lt;\/div&gt;\n      &lt;div class=&quot;card&quot;&gt;\n        &lt;img src=&quot;https:\/\/img.icons8.com\/color\/480\/python.png&quot; alt=&quot;Python&quot;&gt;\n        &lt;h3&gt;Python Programming&lt;\/h3&gt;\n        &lt;p&gt;Master Python basics, data structures, and frameworks.&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Duration: 2 Months&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Fee: \u20B912000&lt;\/p&gt;\n      &lt;\/div&gt;\n      &lt;div class=&quot;card&quot;&gt;\n        &lt;img src=&quot;https:\/\/img.icons8.com\/color\/480\/source-code.png&quot; alt=&quot;Web Development&quot;&gt;\n        &lt;h3&gt;Web Development&lt;\/h3&gt;\n        &lt;p&gt;Full-stack web development with HTML, CSS, JavaScript, and frameworks.&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Duration: 4 Months&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Fee: \u20B912000&lt;\/p&gt;\n      &lt;\/div&gt;\n      &lt;div class=&quot;card&quot;&gt;\n        &lt;img src=&quot;https:\/\/img.icons8.com\/color\/480\/artificial-intelligence.png&quot; alt=&quot;DSA&quot;&gt;\n        &lt;h3&gt;Data Structures &amp; Algorithms&lt;\/h3&gt;\n        &lt;p&gt;Strengthen problem-solving skills with advanced DSA concepts.&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Duration: 3 Months&lt;\/p&gt;\n        &lt;p class=&quot;info&quot;&gt;Fee: \u20B99500&lt;\/p&gt;\n      &lt;\/div&gt;\n    &lt;\/div&gt;\n  &lt;\/section&gt;\n\n  &lt;footer&gt;\n    &lt;p&gt;&amp;copy; 2025 Online Course Management System | All Rights Reserved&lt;\/p&gt;\n  &lt;\/footer&gt;\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Generate_Student_ID as "Generate Student ID"
+			{
+				type =  form
+				form = Student_Enrollment
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											Student = Student_Enrollment[ID != 0].count();
+										Stu = ifnull(Student,0) + 101;
+										input.Student_ID = "STU" + Stu;
+						)
+					}
+				}
+
+			}
+			hide_student_ID as "hide student ID"
+			{
+				type =  form
+				form = Student_Enrollment
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Student_ID;
+					}
+				}
+
+			}
+			calculate_grand_total as "calculate grand total"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+					status = inactive
+
+				on user input of Grand_Total
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// input.Grand_Total = 0;
+										// for each  i in input.Sports_details
+										// {
+										// 	input.Grand_Total = input.Grand_Total + i.Fee_per_month;
+										// }
+						)
+					}
+				}
+
+			}
+			fetch_fee_per_month1 as "fetch fee per month"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on user input of Sports_details.Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											sport = Sports_Master[ID == row.Sports_Name];
+										row.Fee_per_month=sport.Fee_per_month;
+										input.Grand_Total = 0;
+										for each  r in input.Sports_details
+										{
+											input.Grand_Total = input.Grand_Total + r.Fee_per_month;
+										}
+						)
+					}
+				}
+
+			}
+			fetch_no_of_slot_per_mont as "fetch no of slot per month"
+			{
+				type =  form
+				form = Student
+				record event = on add or edit
+
+				on user input of Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											sport = Sports_Master[ID == input.Sports_Name];
+										input.No_of_slot_per_month = sport.No_of_slot_per_month;
+						)
+					}
+				}
+
+			}
+			fetch_no_of_fee_per_month as "fetch no of fee per month"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on user input of Sports_details.Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											sport = Sports_Master[ID == row.Sports_Name];
+										row.No_of_slot_per_month=sport.No_of_slot_per_month;
+						)
+					}
+				}
+
+			}
+			delete_row as "delete row"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on delete row of Sports_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Grand_Total = input.Grand_Total - row.Fee_per_month;
+						)
+					}
+				}
+
+			}
+			restrict_same_sports_name as "restrict same sports names"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+					status = inactive
+
+				on add row of Sports_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// fetchh = Sports_Master[ID != null].ID.getAll();
+										// connect = input.Sports_details.Sports_Name.getall();
+										// fetchh.removeAll(connect);
+										// row.Sports_Name:ui.add(fetchh);
+						)
+					}
+				}
+
+			}
+			restrict_same_days_in_sam as "restrict same days in same sports"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+					status = inactive
+
+				on user input of Sports_details.Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// connect = sports_days[Sports_Master == row.Sports_Name].sports_days;
+										// info connect ;
+										// for each var in input.Sports_details
+										// {
+										// 	if (var.Sports_Name == row.Sports_Name) 
+										//     {
+										// 		connect.removeElement(var.Available_Days);
+										//     }
+										// }
+										// row.Available_Days:ui.add(connect);
+										// fetchh = sports_days[ID != null].ID.getAll();
+										// var = input.Sports_details.removeElement(fetchh);
+						)
+					}
+				}
+
+			}
+			part_2 as "part 2"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+					status = inactive
+
+				on user input of Sports_details.Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// fetchh = sports_days[ID != null].ID.getAll();
+										// connect = input.Sports_details.Sports_Name.getAll();
+										// fetchh.removeElement(connect);
+										// row.sports_days:ui.add(fetchh);
+						)
+					}
+				}
+
+			}
+			Restrict_week as "Restrict week"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on user input of Sports_details.Sports_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// if(row.Sports_Name !=null)
+										// {
+										// 	sport=sports_days[ID==row.Sports_Name].sports_days.getAll();
+										// 	sport.removeAll(input.Sports_details.getAll());
+										// 	row.sports_days:ui.add(sport);
+										// }
+										fetching = sports_days[Sports_Master == row.Sports_Name].ID.getAll();
+										info fetching;
+										filter = input.Sports_details.sports_days.getall();
+										fetching.removeAll(filter);
+										row.sports_days:ui.add(fetching);
+						)
+					}
+				}
+
+			}
+			clear_sport_name as "clear sport name"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on add row of Sports_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.Sports_Name != null)
+										{
+											fetching = sports_days[Sports_Master == row.Sports_Name].ID.getAll();
+											filter = input.Sports_details.sports_days.getall();
+										}
+						)
+					}
+				}
+
+			}
+			clear_sports_name as "clear sports name"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+					status = inactive
+
+				on add row of Sports_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// fetching=Sports_Master[ID==row.Sports_Name].count();
+						)
+					}
+				}
+
+			}
+			filter_days as "filter days"
+			{
+				type =  form
+				form = Sports_Enrollment
+				record event = on add or edit
+
+				on user input of Sports_details.sports_days
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											fetching = sports_days[ID == row.Sports_Name].count();
+										info fetching;
+										Get = Sports_Enrollment[Sports_details.Sports_Name == row.Sports_Name];
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Slots_Time
+			{
+				label placement = left
+			}
+			form sports_days
+			{
+				label placement = left
+			}
+			form Sports_Enrollment
+			{
+				label placement = left
+			}
+			form Sports_Master
+			{
+				label placement = left
+			}
+			form Student
+			{
+				label placement = left
+			}
+			form Student_Enrollment
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Sports_Master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Sports_Name as "Sports Name"
+								Fee_per_month as "Fee per month "
+								No_of_slot_per_month as "No of slot per month"
+								Single_Line as "Single Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Sports_Name as "Sports Name"
+								Fee_per_month as "Fee per month "
+								No_of_slot_per_month as "No of slot per month"
+								Single_Line as "Single Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Student_Enrollments
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Student_Name as " Student Name"
+								Phone_No as "Phone No"
+								Parent_Name as "Parent Name"
+								Emergency_Contact_No as "Emergency Contact No"
+								DOB
+								Student_ID as "Student ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Student_Name as " Student Name"
+								Phone_No as "Phone No"
+								Parent_Name as "Parent Name"
+								Emergency_Contact_No as "Emergency Contact No"
+								DOB
+								Student_ID as "Student ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Sports_Enrollment_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Grand_Total as "Grand Total"
+								Student_ID as "Student ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Grand_Total as "Grand Total"
+								Student_ID as "Student ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report sports_days_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Sports_Master as "Sports Master"
+								sports_days as "sports days"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Sports_Master as "Sports Master"
+								sports_days as "sports days"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Slots_Time_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Sports_Master as "Sports Master"
+								Slot_time as "Slot time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Sports_Master as "Sports Master"
+								Slot_time as "Slot time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Student_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Slots_Time as "Slots Time"
+								Sports_Name as "Sports Name"
+								Fee_per_month as "Fee per month "
+								No_of_slot_per_month as "No of slot per month"
+								sports_days as "sports days"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Slots_Time as "Slots Time"
+								Sports_Name as "Sports Name"
+								Fee_per_month as "Fee per month "
+								No_of_slot_per_month as "No of slot per month"
+								sports_days as "sports days"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Sports_Master
+				{
+					displayname = "Sports Master"
+					icon = "sport-crown"
+					form  Sports_Master
+					{
+						icon = "sport-crown"
+					}
+					report Sports_Master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Student_Enrollments
+				{
+					displayname = "Student Enrollments"
+					icon = "education-pencil-47"
+					form  Student_Enrollment
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Student_Enrollments
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Sports_Enrollment
+				{
+					displayname = "Sports Enrollment"
+					icon = "education-school"
+					form  Sports_Enrollment
+					{
+						icon = "education-school"
+					}
+					report Sports_Enrollment_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section sports_days
+				{
+					displayname = "sports days"
+					icon = "business-progress"
+					form  sports_days
+					{
+						icon = "business-progress"
+					}
+					report sports_days_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Slots_Time
+				{
+					displayname = "Slots Time"
+					icon = "users-2-a-time"
+					form  Slots_Time
+					{
+						icon = "users-2-a-time"
+					}
+					report Slots_Time_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Student
+				{
+					displayname = "Student"
+					icon = "tech-desktop"
+					form  Student
+					{
+						icon = "tech-desktop"
+					}
+					report Student_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section course
+				{
+					displayname = "course"
+					icon = "media-1-button-next"
+					page course
+					{
+						icon = "media-1-button-next"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Slots_Time
+			{
+				label placement = auto
+			}
+			form sports_days
+			{
+				label placement = auto
+			}
+			form Sports_Enrollment
+			{
+				label placement = auto
+			}
+			form Sports_Master
+			{
+				label placement = auto
+			}
+			form Student
+			{
+				label placement = auto
+			}
+			form Student_Enrollment
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Slots_Time
+			{
+				label placement = auto
+			}
+			form sports_days
+			{
+				label placement = auto
+			}
+			form Sports_Enrollment
+			{
+				label placement = auto
+			}
+			form Sports_Master
+			{
+				label placement = auto
+			}
+			form Student
+			{
+				label placement = auto
+			}
+			form Student_Enrollment
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
